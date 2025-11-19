@@ -7,10 +7,14 @@ document.getElementById("startBtn").addEventListener('click', function () {
 });
 
 //Info-knappen
-document.getElementById("infoBtn").addEventListener('click', function (){
+document.getElementById("infoBtn").addEventListener('click', function () {
     document.getElementById("infOverlay").classList.add("showScreen")
 });
 
+document.getElementById("infoReturnBtn").addEventListener('click', function () {
+    document.getElementById("infOverlay").classList.remove("showScreen")
+    document.getElementById("infOverlay").classList.add("hideScreen")
+});
 
 //To do: Flytta kod här nedan vidare till en egen JS fil där Game-view koden ligger?
 
