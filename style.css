@@ -17,7 +17,7 @@ body {
     flex-direction: column;
     align-items: center;
 
-        /*to do: Ändra storlekar så de anpassar för större/mindre skärmar. Möjligen fasta höjder så det inte "hoppar"?*/
+        /*to do: Ändra storlekar så de anpassar för större/mindre skärmar. Fasta höjder så det inte "hoppar" mellan vyer?*/
     width: 340px;
     height: fit-content;
     padding: 2rem;
