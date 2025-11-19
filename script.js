@@ -5,3 +5,11 @@ document.getElementById("startBtn").addEventListener('click', function () {
     document.getElementById("startScreen").classList.add("hideScreen");
     document.getElementById("gameScreen").classList.add("showScreen");
 });
+
+
+//Keyboard Keys
+const keyboardKeys = document.querySelectorAll('#gameScreen .keyboard p');
+
+keyboardKeys.forEach(keyboardKeys => {
+    keyboardKeys.classList.add("keyboardBtn");
+});

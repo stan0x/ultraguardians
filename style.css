@@ -55,6 +55,21 @@ button {
 }
 
 
+/* Keyboard related sheit */
+.keyboard {
+    display: grid;
+    grid-template-columns: repeat(15,1fr);
+    grid-template-rows: repeat(2, auto);
+}
+
+.keyboardBtn {
+    background-color: white;
+    border: 2px solid black;
+    cursor: pointer;
+    margin: 0.1rem;
+}
+
+
 .infoBtn {
     display:flex;
     justify-content: center;
