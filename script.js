@@ -7,9 +7,20 @@ document.getElementById("startBtn").addEventListener('click', function () {
 });
 
 
+//To do: Flytta kod här nedan vidare till en egen JS fil där Game-view koden ligger?
+
 //Keyboard Keys
 const keyboardKeys = document.querySelectorAll('#gameScreen .keyboard p');
 
 keyboardKeys.forEach(keyboardKeys => {
+
+    //Ge alla knappar samma styling
     keyboardKeys.classList.add("keyboardBtn");
+
+    //Klickar man på en knapp så blir den aktiv, Dvs får klassen activeKey.
+    //To do: Lägga till all funktionalitet här.
+    keyboardKeys.addEventListener('click', function() { 
+        keyboardKeys.classList.add("activeKey");
+    }
+    );
 });
