@@ -86,3 +86,7 @@ button {
 .hideScreen {
     display: none !important;
 }
+
+.showScreen {
+    display: flex !important;
+}

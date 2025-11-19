@@ -1,12 +1,7 @@
 
 //Komma vidare från startskärm
-console.log(document.getElementById("startBtn"));
-
+//To do: Gör en funktion som kollar ID på knappen som blir klickad och styr vilka vyer som är synliga istället.
 document.getElementById("startBtn").addEventListener('click', function () {
     document.getElementById("startScreen").classList.add("hideScreen");
-
-    // // Felsökning
-    // console.log ('click');
-    // console.log(document.getElementById("startBtn"));
-    // console.log(document.getElementById("startScreen").classList);
+    document.getElementById("gameScreen").classList.add("showScreen");
 });
