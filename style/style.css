@@ -67,10 +67,10 @@ button {
 }
 
 
-.hideScreen {
+.hideView {
     display: none !important;
 }
 
-.showScreen {
+.showView {
     display: flex !important;
 }
