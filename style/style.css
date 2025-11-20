@@ -5,12 +5,14 @@
     font-family: cursive;
 }
 
+
+/* Centrera hela spelet på skärmen */
 body {
-    /* Centrera hela spelet på skärmen */
     display:flex;
     justify-content: center;
 }
 
+/* Styling Spelyta */
 .gameBackground {
     position: relative;
     display: flex;
@@ -27,14 +29,14 @@ body {
     border-radius: 10px;
 }
 
-#startScreen {
+#startView {
     display: flex;
     flex-direction: column;
     justify-content: center;
 }
 
 button {
-    margin:1rem;
+    margin: 1rem;
     padding: 0.5rem;
     border-radius: 10px;
     cursor: pointer;
@@ -55,70 +57,7 @@ button {
 }
 
 
-/* Keyboard related sheit */
-.keyboard {
-    display: grid;
-    grid-template-columns: repeat(15,1fr);
-    grid-template-rows: repeat(2, auto);
-}
 
-.keyboardBtn {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    background-color: white;
-    border: 2px solid black;
-    cursor: pointer;
-    margin: 0.1rem;
-    height: 2rem;
-    width: 2rem;
-}
-
-.activeKey {
-        color:white;
-        background-color: blue;
-    }
-
-
-
-/* SHEIT som alltid ligger där det ligger*/
-.infoBtn {
-    display:flex;
-    justify-content: center;
-    align-items: center;
-
-    width:2rem;
-    height:2rem;
-    border-radius: 1337px;
-
-    background-color: white;
-    border: 3px solid black;
-
-    font-weight: bold;
-    font-size: 190%;
-
-    position: absolute;
-    top:0;
-    right:0;
-
-}
-
-#infOverlay {
-    position: absolute;
-    top:0;
-
-    width: 100%;
-    height: 100%;
-    z-index: 10000;
-
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-
-    background-color: rgba(1, 1, 95, 0.815);
-    color: white
-
-}
 
 .copyRight {
     position: absolute;
@@ -126,7 +65,6 @@ button {
     left: 50%;
     transform: translateX(-50%);
 }
-
 
 
 .hideScreen {
