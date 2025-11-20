@@ -2,6 +2,8 @@
 const letters = ["A","B","C","D","E","F","G","H","I","J","K","L","M","N","O","P","Q","R","S","T","U","V","W","X","Y","Z","Å","Ä","Ö"];
 const keyboardDiv = document.getElementById("keyboard");
 const keyboardKeys = document.querySelectorAll('#gameScreen .keyboard p');
+//Temporär variable för testning
+let clickCount = 0;
 
 //Skapa Tangentbordets Tecken
 for (let i = 0; i < letters.length; i++) {
@@ -12,6 +14,16 @@ for (let i = 0; i < letters.length; i++) {
     p.classList.add("keyboardBtn");
     p.addEventListener('click', function() {
     p.classList.add("activeKey");
+    
+    //Kolla om det klickats 4 gånger, gå vidare till Game over.
+    clickCount ++;
+    if(clickCount > 3 ) {
+      clickCount = 0;
+      document.getElementById("gameView").classList.remove("showView");
+      document.getElementById("gameView").classList.add("hideView");
+      document.getElementById("gameOverView").classList.add("showView");
+    }
+
   });
 
     keyboardDiv.appendChild(p);
