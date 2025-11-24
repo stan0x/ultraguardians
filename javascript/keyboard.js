@@ -25,8 +25,10 @@ for (let i = 0; i < letters.length; i++) {
 
       const p = document.querySelectorAll(".keyboardBtn"); 
       for (let i = 0; i < p.length; i++) { 
-        p[i].classList.remove("activeKey");
         p[i].classList.add("inactiveKey");
+        p[i].classList.remove("activeKey");
+        p[i].classList.remove("inactiveKey");
+
       //To do: lägg till om vi har olika färger på 
 
     }
