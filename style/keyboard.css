@@ -22,6 +22,10 @@
 
 /* Temporär styling för tryckta knappar */
 .activeKey {
-        color: white;
-        background-color: blue;
-    }
+    color: white;
+    background-color: blue;
+}
+.inactiveKey {
+    color: black;
+    background-color: white;
+}

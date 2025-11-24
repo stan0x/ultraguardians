@@ -22,9 +22,20 @@ for (let i = 0; i < letters.length; i++) {
       document.getElementById("gameView").classList.remove("showView");
       document.getElementById("gameView").classList.add("hideView");
       document.getElementById("gameOverView").classList.add("showView");
+
+      const p = document.querySelectorAll(".keyboardBtn"); 
+      for (let i = 0; i < p.length; i++) { 
+        p[i].classList.remove("activeKey");
+        p[i].classList.add("inactiveKey");
+      //To do: lägg till om vi har olika färger på 
+
+    }
     }
 
   });
 
     keyboardDiv.appendChild(p);
   }
+
+  
+
