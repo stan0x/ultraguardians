@@ -80,18 +80,18 @@ function handleGuess(letter, buttonX) {
   updateLivesDisplay();
   checkGameEnd();
 }
-
-function checkGameEnd() {
-  if (chosenWord.split("").every(l => guessedLetters.includes(l))) {
-    showView(gameOverView);
-    gameOverView.querySelector("h2").textContent = "Du vann!";
-  } 
-  if (wrongGuesses >= hangmanParts.length) {
-    showView(gameOverView);
-    gameOverView.querySelector("h2").textContent = 
-    `Du är en idiot - Ordet var: ${chosenWord}`;
-  }
-}
+// 
+// function checkGameEnd() {
+  // if (chosenWord.split("").every(l => guessedLetters.includes(l))) {
+    // showView(gameOverView);
+    // gameOverView.querySelector("h2").textContent = "Du vann!";
+  // } 
+  // if (wrongGuesses >= hangmanParts.length) {
+    // showView(gameOverView);
+    // gameOverView.querySelector("h2").textContent = 
+    // `Du är en idiot - Ordet var: ${chosenWord}`;
+  // }
+// }
 
 const letters = ["A","B","C","D","E","F","G","H","I","J","K","L","M","N","O","P",
                  "Q","R","S","T","U","V","W","X","Y","Z","Å","Ä","Ö"];
