@@ -1,9 +1,22 @@
+const startView = document.getElementById("startView");
+const gameView = document.getElementById("gameView");
+const gameOverView = document.getElementById("gameOverView");
+const keyboardDiv = document.getElementById("keyboard");
+const wordDisplay = document.getElementById("wordDisplay");
+const livesDisplay = document.getElementById("livesDisplay");
+
+function showView(view) {
+  startView.classList.add("hideView");
+  gameView.classList.add("hideView");
+  gameOverView.classList.add("hideView");
+
+  view.classList.remove("hideView");
+  view.classList.add("showView");
+}
+
 let chosenWord = "HEJ"
 let guessedLetters = [];
 let wrongGuesses = 0;
-
-const wordDisplay = document.getElementById("wordDisplay");
-
 
 const hangmanParts = [
   document.getElementById("head"),
@@ -46,8 +59,7 @@ function updateWordDisplay() {
   }
 
 function updateLivesDisplay() {
-  const livesDisplay = document.getElementById("livesDisplay");
-  livesDisplay.textContent = `Fel: ${wrongGuesses} / ${hangmanParts.length}`;
+  livesDisplay.textContent = `Fel: ${wrongGuesses} / 4`;
 }
 
 function handleGuess(letter, buttonX) {
@@ -60,7 +72,7 @@ function handleGuess(letter, buttonX) {
     wrongGuesses++;
     buttonX.style.backgroundColor = "red";
 
-    if (wrongGuesses <= hangmanParts.length) {
+    if (wrongGuesses <= 4) {
       hangmanParts[wrongGuesses - 1].style.visibility = "visible";
     }
   }
@@ -80,3 +92,27 @@ function checkGameEnd() {
     `Du är en idiot - Ordet var: ${chosenWord}`;
   }
 }
+
+const letters = ["A","B","C","D","E","F","G","H","I","J","K","L","M","N","O","P",
+                 "Q","R","S","T","U","V","W","X","Y","Z","Å","Ä","Ö"];
+
+function createKeyboard() {
+  keyboardDiv.innerHTML = "";
+  letters.forEach(letter => {
+    const p = document.createElement("p");
+    p.textContent = letter;
+    p.classList.add("keyboardBtn");
+
+    p.addEventListener("click", () => {
+      handleGuess(letter, p);
+    });
+
+    keyboardDiv.appendChild(p);    
+  });
+}
+
+document.getElementById("startBtn").addEventListener("click", startGame);
+
+document.getElementById("gameOverButton").addEventListener("click", () => {
+    showView(startView);
+});
