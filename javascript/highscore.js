@@ -4,7 +4,7 @@ const KEY = 'highscores';
 
 // Ändra knapp beroende på om spelaren skrivit något eller inte
 playerNameInput.addEventListener('input', () => {
-    if (playerNameInput.vaue === '') {
+    if (playerNameInput.value === '') {
         gameOverButton.textContent = "Återgå till Start";
     } else {
         gameOverButton.textContent = "Återgå & Skicka";
@@ -15,13 +15,20 @@ playerNameInput.addEventListener('input', () => {
 gameOverButton.addEventListener('click', () => {
     const name = playerNameInput.value.trim();
     if (name == '') return;
+
+    //Få datom och tid
+    const now = new Date();
+    const time = now.getFullYear() + " " + now.getDate() + "/" + now.getMonth() + " " + now.getHours() + ":" + now.getMinutes();
     
+
     let highscores = JSON.parse(localStorage.getItem(KEY)) || [];
   
-    //lägg namnet till arrayen
-    highscores.unshift(name);
+    const newHighscoreEntry = {
+        name, time
+    };
 
-    //lägg till sortering efter score här, väntar på att poäng är en variabel vi kan använda.
+    //lägg namnet till arrayen
+    highscores.unshift(newHighscoreEntry);
 
 
     //Korta ner highscores till 5 entries
@@ -49,7 +56,7 @@ function showHighscore() {
 
     highscores.forEach((name) => {
         const spelare = document.createElement("li");
-        spelare.textContent = name;
+        spelare.textContent = `${name.name} - ${name.time}`;
         highscoreList.appendChild(spelare);
     });
 }
