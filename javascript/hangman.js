@@ -42,6 +42,7 @@ function startGame() {
   chosenWord = wordPool[Math.floor(Math.random() * wordPool.length)];
   guessedLetters = [];
   wrongGuesses = 0;
+  totalGuesses = 0;
 
   createKeyboard();
   resetHangman();
@@ -79,6 +80,7 @@ function handleGuess(letter, buttonX) {
   if (chosenWord.includes(letter)) {
     guessedLetters.push(letter);
     buttonX.style.backgroundColor = "green";
+    totalGuesses ++;
   } else {
     wrongGuesses++;
     buttonX.style.backgroundColor = "red";
@@ -94,6 +96,9 @@ function handleGuess(letter, buttonX) {
 
 function checkGameEnd() {
   if (legs.style.visibility === "visible") {
+
+      //Uppdatera score
+      window.score = totalGuesses + wrongGuesses;
       document.getElementById("gameView").classList.remove("showView");
       document.getElementById("gameView").classList.add("hideView");
       document.getElementById("gameOverView").classList.add("showView");
