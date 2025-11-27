@@ -1,4 +1,4 @@
-//  Hämtar HTML elementen
+// gör koden till själva hänggubben//  Hämtar HTML elementen
 const startView = document.getElementById("startView");
 const gameView = document.getElementById("gameView");
 const gameOverView = document.getElementById("gameOverView");
@@ -21,7 +21,10 @@ let chosenWord = "";
 let guessedLetters = [];
 let wrongGuesses = 0;
 
+const wordPool = [ "TÖNT", "TOMTE", "TOFFEL", "SAND" ]
+
 const hangmanParts = [
+  document.getElementById("scaffold"),
   document.getElementById("head"),
   document.getElementById("body"),
   document.getElementById("arms"),
@@ -36,7 +39,7 @@ const hangmanParts = [
 
   // startar spelet och väljer ett ord, resettar allting
 function startGame() {
-  chosenWord = "HEJ";
+  chosenWord = wordPool[Math.floor(Math.random() * wordPool.length)];
   guessedLetters = [];
   wrongGuesses = 0;
 
@@ -66,7 +69,7 @@ function updateWordDisplay() {
 
   // visar hur många fel en gjort
 function updateLivesDisplay() {
-  livesDisplay.textContent = `Fel: ${wrongGuesses} / 4`;
+  livesDisplay.textContent = `Fel: ${wrongGuesses} / 5`;
 }
 
 // det som händer när man klickar en bokstav
@@ -80,7 +83,7 @@ function handleGuess(letter, buttonX) {
     wrongGuesses++;
     buttonX.style.backgroundColor = "red";
 
-    if (wrongGuesses <= 4) {
+    if (wrongGuesses <= 5) {
       hangmanParts[wrongGuesses - 1].style.visibility = "visible";
     }
   }
