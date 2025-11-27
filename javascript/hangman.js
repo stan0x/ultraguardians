@@ -14,14 +14,11 @@ function showView(view) {
   view.classList.add("showView");
 }
 
-let chosenWord = "";
+let chosenWord = "HEJ"
 let guessedLetters = [];
 let wrongGuesses = 0;
 
-const wordPool = [ "TÖNT", "TOMTE", "TOFFEL", "SAND" ]
-
 const hangmanParts = [
-  document.getElementById("scaffold"),
   document.getElementById("head"),
   document.getElementById("body"),
   document.getElementById("arms"),
@@ -34,7 +31,7 @@ const hangmanParts = [
   }
 
 function startGame() {
-  chosenWord = wordPool[Math.floor(Math.random() * wordPool.length)];
+  chosenWord = "HEJ";
   guessedLetters = [];
   wrongGuesses = 0;
 
@@ -62,7 +59,7 @@ function updateWordDisplay() {
   }
 
 function updateLivesDisplay() {
-  livesDisplay.textContent = `Fel: ${wrongGuesses} / 5`;
+  livesDisplay.textContent = `Fel: ${wrongGuesses} / 4`;
 }
 
 function handleGuess(letter, buttonX) {
@@ -75,7 +72,7 @@ function handleGuess(letter, buttonX) {
     wrongGuesses++;
     buttonX.style.backgroundColor = "red";
 
-    if (wrongGuesses <= 5) {
+    if (wrongGuesses <= 4) {
       hangmanParts[wrongGuesses - 1].style.visibility = "visible";
     }
   }
