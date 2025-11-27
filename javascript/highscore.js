@@ -13,12 +13,18 @@ playerNameInput.addEventListener('input', () => {
 
 //Klick på återgå knapp
 gameOverButton.addEventListener('click', () => {
+    //Få namn
     const name = playerNameInput.value.trim();
     if (name == '') return;
 
     //Få datum och tid
     const now = new Date();
     const time = now.getFullYear() + " " + now.getDate() + "/" + now.getMonth() + " " + now.getHours() + ":" + now.getMinutes();
+
+    //få Ordlängd
+    
+
+    //få Score
     
     let highscores = JSON.parse(localStorage.getItem(KEY)) || [];
   
