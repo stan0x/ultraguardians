@@ -99,6 +99,7 @@ function checkGameEnd() {
 
       //Uppdatera score
       window.score = totalGuesses + wrongGuesses;
+      
       document.getElementById("gameView").classList.remove("showView");
       document.getElementById("gameView").classList.add("hideView");
       document.getElementById("gameOverView").classList.add("showView");
