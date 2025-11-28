@@ -16,16 +16,16 @@
     <section class = "gameBackground">
         <H1>Hänga Gubbe</H1>
         
+        
         <!-- Startview -->
         <section id = "startView" class = "viewStyle">
+            <ul>
+                <li>Lista ut ordet innan gubben hängs</li>
+                <li>Välj bokstäver genom att klicka på dom</li>
+                <li>Rätt gissningar markeras grönt</li>
+                <li>Fel gissningar markeras rött</li>
+            </ul> 
             <button id="startBtn">Spela</button>
-               
-            <!-- Container att hålla Rankings -->
-            <div class = "rankingContainer">
-                <h2>Ranking</h2>
-                <!-- to do: Byt ut sektionen nedan mot något mer relevant. Typ ordered list -->
-                <ol id="highscore"></ol>
-            </div>
         </section>
 
 
@@ -66,13 +66,16 @@
 
         <!-- Info Button Overlay-->
          <div id = "infOverlay" class = "hideView">
-            <h3>Hur man spelar</h3>
-            <ul>
+            <!-- <ul>
                 <li>Lista ut ordet innan gubben hängs</li>
                 <li>Välj bokstäver genom att klicka på dom</li>
                 <li>Rätt gissningar markeras grönt</li>
                 <li>Fel gissningar markeras rött</li>
-            </ul>
+            </ul> -->
+            <div class = "rankingContainer">
+                <h2>Ranking</h2>
+                <ol id="highscore"></ol>
+            </div>
             <button id = "infoReturnBtn">Återgå</button>
         </div>
 

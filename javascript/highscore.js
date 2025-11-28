@@ -7,28 +7,42 @@ playerNameInput.addEventListener('input', () => {
     if (playerNameInput.value === '') {
         gameOverButton.textContent = "Återgå till Start";
     } else {
-        gameOverButton.textContent = "Återgå & Skicka";
+        gameOverButton.textContent = "Skicka Highscore";
     }
 });
 
 //Klick på återgå knapp
 gameOverButton.addEventListener('click', () => {
+
+    //Återställ knappen
+    gameOverButton.textContent = "Återgå till Start"
+    
+    //Få namn
     const name = playerNameInput.value.trim();
     if (name == '') return;
 
     //Få datum och tid
     const now = new Date();
     const time = now.getFullYear() + " " + now.getDate() + "/" + now.getMonth() + " " + now.getHours() + ":" + now.getMinutes();
-    
+
+    //få Ordlängd
+    const wordLength = window.wordLength;
+
+    //få Score
+    const playerScore = window.score;
+
+
     let highscores = JSON.parse(localStorage.getItem(KEY)) || [];
   
     const newHighscoreEntry = {
-        name, time, 
+        name, wordLength, playerScore, time, 
     };
 
     //lägg namnet till arrayen
     highscores.unshift(newHighscoreEntry);
 
+    //sortera
+    highscores.sort((a, b) => a.score - b.score);
 
     //Korta ner highscores till 5 entries
     if (highscores.length > 5) {
@@ -55,7 +69,7 @@ function showHighscore() {
 
     highscores.forEach((name) => {
         const spelare = document.createElement("li");
-        spelare.textContent = `${name.name} - ${name.time}`;
+        spelare.innerHTML = `${name.name} &lpar; ${name.playerScore}p &rpar; ${name.time} <br> Ordlängd: ${name.wordLength}`;
         highscoreList.appendChild(spelare);
     });
 }

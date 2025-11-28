@@ -43,6 +43,9 @@ function startGame() {
   guessedLetters = [];
   wrongGuesses = 0;
 
+  //Skicka hur långt ordet är
+  window.wordLength = chosenWord.length;
+  
   createKeyboard();
   resetHangman();
   updateWordDisplay();
@@ -94,6 +97,10 @@ function handleGuess(letter, buttonX) {
 
 function checkGameEnd() {
   if (legs.style.visibility === "visible") {
+
+      //Uppdatera score
+      window.score = wrongGuesses;
+      
       document.getElementById("gameView").classList.remove("showView");
       document.getElementById("gameView").classList.add("hideView");
       document.getElementById("gameOverView").classList.add("showView");
