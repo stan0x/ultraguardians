@@ -65,7 +65,7 @@ function showHighscore() {
 
     highscores.forEach((name) => {
         const spelare = document.createElement("li");
-        spelare.textContent = `${name.name} - ${name.wordLength} - ${name.playerScore}- ${name.time}`;
+        spelare.innerHTML = `${name.name} &lpar; ${name.playerScore}p &rpar; Tid: ${name.time} <br> Ordlängd: ${name.wordLength}`;
         highscoreList.appendChild(spelare);
     });
 }
