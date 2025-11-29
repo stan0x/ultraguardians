@@ -20,6 +20,9 @@ function showView(view) {
 let chosenWord = "";
 let guessedLetters = [];
 let wrongGuesses = 0;
+let wordLength = 0;
+export {wrongGuesses};
+export {wordLength};
 
 const wordPool = [ "TÖNT", "TOMTE", "TOFFEL", "SAND" ]
 
@@ -42,9 +45,7 @@ function startGame() {
   chosenWord = wordPool[Math.floor(Math.random() * wordPool.length)];
   guessedLetters = [];
   wrongGuesses = 0;
-
-  //Skicka hur långt ordet är
-  window.wordLength = chosenWord.length;
+  wordLength = chosenWord.length;
   
   createKeyboard();
   resetHangman();
@@ -97,9 +98,6 @@ function handleGuess(letter, buttonX) {
 
 function checkGameEnd() {
   if (legs.style.visibility === "visible") {
-
-      //Uppdatera score
-      window.score = wrongGuesses;
       
       document.getElementById("gameView").classList.remove("showView");
       document.getElementById("gameView").classList.add("hideView");
