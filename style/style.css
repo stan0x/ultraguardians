@@ -71,7 +71,10 @@ button {
     }
 }
 
-
+.hangedMan {
+  transform: scale(0.5);
+  transform-origin: top center;
+}
 
 
 .copyRight {
