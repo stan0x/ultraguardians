@@ -44,7 +44,7 @@ gameOverButton.addEventListener('click', () => {
     highscores.unshift(newHighscoreEntry);
 
     //sortera
-    highscores.sort((a, b) => a.score - b.score);
+    highscores.sort((a, b) => a.playerScore - b.playerScore);
 
     //Korta ner highscores till 5 entries
     if (highscores.length > 5) {
