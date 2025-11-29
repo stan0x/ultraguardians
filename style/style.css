@@ -92,3 +92,22 @@ button {
 
 #head, #body, #arms, #legs 
     {visibility: hidden;}
+
+
+
+@media (max-width: 600px) {
+  .gameBackground {
+    margin-top: 2rem;
+
+    width: 340px;
+    height: 600px;
+    padding: 0.5rem;
+
+    & ul {
+        margin-top: 2rem;
+    }
+    & #startBtn {
+        margin-top: 2rem;
+    }
+}
+}
