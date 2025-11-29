@@ -1,6 +1,8 @@
 const gameOverButton = document.getElementById('gameOverButton');
 const playerNameInput = document.getElementById('playerName');
 const KEY = 'highscores';
+import { wrongGuesses } from "./hangman.js";
+import { wordLength } from "./hangman.js";
 
 // Ändra knapp beroende på om spelaren skrivit något eller inte
 playerNameInput.addEventListener('input', () => {
@@ -26,16 +28,16 @@ gameOverButton.addEventListener('click', () => {
     const time = now.getFullYear() + " " + now.getDate() + "/" + now.getMonth() + " " + now.getHours() + ":" + now.getMinutes();
 
     //få Ordlängd
-    const wordLength = window.wordLength;
+    const wordL = wordLength;
 
     //få Score
-    const playerScore = window.score;
+    const playerScore = wrongGuesses;
 
 
     let highscores = JSON.parse(localStorage.getItem(KEY)) || [];
   
     const newHighscoreEntry = {
-        name, wordLength, playerScore, time, 
+        name, wordL, playerScore, time, 
     };
 
     //lägg namnet till arrayen
