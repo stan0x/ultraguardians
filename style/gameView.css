@@ -1,0 +1,30 @@
+#gameView {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    height: 100%;
+    width: 100%;
+    padding: 0.5rem;
+    box-sizing: border-box;
+}
+
+.keyboardContainer {
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin-top: 1rem;
+}
+
+.hangedMan {
+    transform: scale(0.5);
+    transform-origin: top center;
+    max-height: 60%;
+    width: auto;
+    margin-bottom: 1rem;
+}
+
+
+#head, #body, #arms, #legs 
+    {visibility: hidden;}

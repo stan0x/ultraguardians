@@ -12,105 +12,6 @@ body {
     justify-content: center;
 }
 
-/* Styling Spelyta */
-.gameBackground {
-    position: relative;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    
-    margin-top: 2rem;
-
-    width: 600px;
-    height: 600px;
-    padding: 2rem;
-
-    background-color: lightblue;
-    border: 3px solid black;
-    border-radius: 10px;
-
-    & ul {
-        margin-top: 2rem;
-    }
-    & #startBtn {
-        margin-top: 2rem;
-    }
-}
-
-.viewStyle {
-    flex: 1;
-    width: 100%;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between; /* Viktigt för tangentbordet längst ned */
-    align-items: center;
-}
-
-#gameView {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: flex-start;
-    height: 100%;
-    width: 100%;
-    padding: 0.5rem;
-    box-sizing: border-box;
-}
-
-.keyboardContainer {
-    width: 100%;
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    margin-top: 1rem;
-}
-
-button {
-    margin: 1rem;
-    padding: 0.5rem;
-    width: fit-content;
-    height: fit-content;
-    border-radius: 10px;
-    cursor: pointer;
-}
-
-
-.rankingContainer {
-    background-color: white;
-    color: black;
-    padding:0.5rem 2rem;
-    margin:2rem 0 2rem 0;
-    border-radius: 10px;
-    border: 3px solid black;
-
-    font-size: medium;
-
-    & h2 {
-        display: flex;
-        justify-content: center;
-        border-bottom: 3px solid black;
-    }
-}
-
-.hangedMan {
-    transform: scale(0.5);
-    transform-origin: top center;
-    max-height: 60%;
-    width: auto;
-    margin-bottom: 1rem;
-}
-
-
-
-
-.copyRight {
-    position: absolute;
-    bottom: 0;
-    left: 50%;
-    transform: translateX(-50%);
-}
-
-
 .hideView {
     display: none !important;
 }
@@ -119,24 +20,7 @@ button {
     display: flex !important;
 }
 
-#head, #body, #arms, #legs 
-    {visibility: hidden;}
 
 
 
-@media (max-width: 600px) {
-  .gameBackground {
-    margin-top: 2rem;
 
-    width: 340px;
-    height: 600px;
-    padding: 0.5rem;
-
-    & ul {
-        margin-top: 2rem;
-    }
-    & #startBtn {
-        margin-top: 2rem;
-    }
-}
-}

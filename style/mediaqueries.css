@@ -1,0 +1,36 @@
+@media (max-width: 600px) {
+    .gameBackground {
+        margin-top: 2rem;
+
+        width: 340px;
+        height: 600px;
+        padding: 0.5rem;
+
+        & ul {
+            margin-top: 2rem;
+        }
+        & #startBtn {
+            margin-top: 2rem;
+        }
+}
+
+
+   .keyboard {
+    display: grid;
+    grid-template-columns: repeat(10,1fr);
+    grid-template-rows: repeat(3, auto);
+}
+
+.keyboardBtn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: white;
+    border: 2px solid black;
+    cursor: pointer;
+    margin: 0.1rem;
+    height: 1.8rem;
+    width: 1.8rem;
+}
+
+}
