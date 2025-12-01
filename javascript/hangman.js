@@ -1,3 +1,6 @@
+window.score = 0;
+
+
 // gör koden till själva hänggubben//  Hämtar HTML elementen
 const startView = document.getElementById("startView");
 const gameView = document.getElementById("gameView");
@@ -21,8 +24,7 @@ let chosenWord = "";
 let guessedLetters = [];
 let wrongGuesses = 0;
 let wordLength = 0;
-export {wrongGuesses};
-export {wordLength};
+export {wrongGuesses, wordLength};
 
 const wordPool = [ "TÖNT", "TOMTE", "TOFFEL", "SAND" ]
 
@@ -83,9 +85,11 @@ function handleGuess(letter, buttonX) {
   if (chosenWord.includes(letter)) {
     guessedLetters.push(letter);
     buttonX.style.backgroundColor = "green";
+
   } else {
     wrongGuesses++;
     buttonX.style.backgroundColor = "red";
+
 
     if (wrongGuesses <= 5) {
       hangmanParts[wrongGuesses - 1].style.visibility = "visible";
@@ -96,14 +100,52 @@ function handleGuess(letter, buttonX) {
   checkGameEnd();  
 }
 
-function checkGameEnd() {
-  if (legs.style.visibility === "visible") {
-      
-      document.getElementById("gameView").classList.remove("showView");
-      document.getElementById("gameView").classList.add("hideView");
-      document.getElementById("gameOverView").classList.add("showView");
+// gör en css class som blinkar
+function blinkScreen(colorClass, callback) {
+  document.body.classList.add(colorClass);
+  
+// om 2 sek tar bort classen och går vidare till nästa skrev
+  setTimeout(() => {
+    document.body.classList.remove(colorClass);
+    callback(); 
+  }, 2000);
+}
+
+function showGameOver(won) {
+  gameView.classList.remove("showView");
+  gameView.classList.add("hideView");
+
+  gameOverView.classList.add("showView");
+
+  if (won) {
+    document.querySelector("#gameOverView h2").innerHTML =
+      `Du vann!<p>ordet var: ${chosenWord}<p>Fel gissningar: ${wrongGuesses}`;
+  } else {
+    document.querySelector("#gameOverView h2").innerHTML =
+      `Game over!<p>ordet var: ${chosenWord}<p>Fel gissningar: ${wrongGuesses}`;
   }
 }
+
+function checkGameEnd() {
+
+  const allLettersGuessed = chosenWord
+    .split("")
+    .every(letter => guessedLetters.includes(letter));
+
+  if (allLettersGuessed) {
+    blinkScreen("blink-green", () => {
+      showGameOver(true);
+    });
+    return;
+  }
+
+  if (wrongGuesses === 5) {
+    blinkScreen("blink-red", () => {
+      showGameOver(false);
+    });
+  }
+}
+
 
 const letters = ["A","B","C","D","E","F","G","H","I","J","K","L","M","N","O","P",
                  "Q","R","S","T","U","V","W","X","Y","Z","Å","Ä","Ö"];
@@ -123,9 +165,5 @@ function createKeyboard() {
   });
 }
 
-document.getElementById("startBtn").addEventListener("click", startGame);
-
-document.getElementById("gameOverButton").addEventListener("click", () => {
-    showView(startView);
-});
+document.getElementById("startBtn").addEventListener("click", startGame); 
 
