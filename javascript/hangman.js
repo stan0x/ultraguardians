@@ -100,6 +100,32 @@ function handleGuess(letter, buttonX) {
   checkGameEnd();  
 }
 
+// gör en css class som blinkar
+function blinkScreen(colorClass, callback) {
+  document.body.classList.add(colorClass);
+  
+// om 2 sek tar bort classen och går vidare till nästa skrev
+  setTimeout(() => {
+    document.body.classList.remove(colorClass);
+    callback(); 
+  }, 2000);
+}
+
+function showGameOver(won) {
+  gameView.classList.remove("showView");
+  gameView.classList.add("hideView");
+
+  gameOverView.classList.add("showView");
+
+  if (won) {
+    document.querySelector("#gameOverView h2").innerHTML =
+      `Du vann!<p>ordet var: ${chosenWord}<p>Poäng: ${wrongGuesses}`;
+  } else {
+    document.querySelector("#gameOverView h2").innerHTML =
+      `Game over!<p>ordet var: ${chosenWord}<p>Poäng: ${wrongGuesses}`;
+  }
+}
+
 function checkGameEnd() {
 
   const allLettersGuessed = chosenWord
@@ -107,23 +133,19 @@ function checkGameEnd() {
     .every(letter => guessedLetters.includes(letter));
 
   if (allLettersGuessed) {
-    document.getElementById("gameView").classList.remove("showView");
-    document.getElementById("gameView").classList.add("hideView");
-    document.getElementById("gameOverView").classList.add("showView");
-    document.querySelector("#gameOverView h2").innerHTML = 
-    `Du vann!<p>ordet var: ${chosenWord}<p>Poäng: ${wrongGuesses}`;
-
+    blinkScreen("blink-green", () => {
+      showGameOver(true);
+    });
     return;
   }
 
   if (wrongGuesses === 5) {
-    document.getElementById("gameView").classList.remove("showView");
-    document.getElementById("gameView").classList.add("hideView");
-    document.getElementById("gameOverView").classList.add("showView");
-    document.querySelector("#gameOverView h2").innerHTML = 
-    `Game over!<p>ordet var: ${chosenWord}<p>Poäng: ${wrongGuesses}`;
+    blinkScreen("blink-red", () => {
+      showGameOver(false);
+    });
   }
 }
+
 
 const letters = ["A","B","C","D","E","F","G","H","I","J","K","L","M","N","O","P",
                  "Q","R","S","T","U","V","W","X","Y","Z","Å","Ä","Ö"];
