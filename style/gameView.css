@@ -30,9 +30,9 @@
     {visibility: hidden;}
 
 
-.blink-green {animation: blinkGreen 0.3s alternate 6;}
+.blink-green {animation: blinkGreen 0.5s alternate 6;}
 
-.blink-red   {animation: blinkRed 0.3s alternate 6;}
+.blink-red   {animation: blinkRed 0.1s alternate 20;}
 
 @keyframes blinkGreen {
   from { background-color: white; }
