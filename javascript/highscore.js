@@ -1,5 +1,8 @@
 const gameOverButton = document.getElementById('gameOverButton');
 const playerNameInput = document.getElementById('playerName');
+const sortScoreBtn = document.getElementById("sortScoreBtn");
+const sortDateBtn = document.getElementById("sortDatebtn");
+
 const KEY = 'highscores';
 import { wrongGuesses } from "./hangman.js";
 import { wordLength } from "./hangman.js";

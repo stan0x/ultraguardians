@@ -33,3 +33,8 @@ body {
     #playerName:focus 
     {background: white;
      box-shadow: 0 0 0 3px #7ab6ff;}
+
+     .infobtn {
+        width: 10em;
+        background-color: red;
+     }
