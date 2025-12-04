@@ -16,6 +16,25 @@ playerNameInput.addEventListener('input', () => {
     }
 });
 
+
+//Sortera highscore efter poäng
+sortScoreBtn.addEventListener('click', () => {
+    console.log("Click score")
+    let highscores = JSON.parse(localStorage.getItem(KEY)) || [];
+    highscores.sort((a, b) => a.playerScore - b.playerScore);
+    localStorage.setItem(KEY, JSON.stringify(highscores));
+    showHighscore();
+})
+
+//Sortera highscore efter datum
+sortDateBtn.addEventListener('click', () => {
+    console.log("click time")
+    let highscores = JSON.parse(localStorage.getItem(KEY)) || [];
+    highscores.sort((a, b) => new Date(a.time) - new Date(b.time));
+    localStorage.setItem(KEY, JSON.stringify(highscores));
+    showHighscore();
+});
+
 //Klick på återgå knapp
 gameOverButton.addEventListener('click', () => {
 
@@ -27,9 +46,8 @@ gameOverButton.addEventListener('click', () => {
     if (name == '') return;
 
     //Få datum och tid
-    const now = new Date();
-    const time = now.getFullYear() + " " + now.getDate() + "/" + now.getMonth() + " " + now.getHours() + ":" + now.getMinutes();
-
+    const time = new Date().toISOString();
+    
     //få Ordlängd
     const wordL = wordLength;
 
