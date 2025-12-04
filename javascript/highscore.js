@@ -19,7 +19,6 @@ playerNameInput.addEventListener('input', () => {
 
 //Sortera highscore efter poäng
 sortScoreBtn.addEventListener('click', () => {
-    console.log("Click score")
     let highscores = JSON.parse(localStorage.getItem(KEY)) || [];
     highscores.sort((a, b) => a.playerScore - b.playerScore);
     localStorage.setItem(KEY, JSON.stringify(highscores));
@@ -28,7 +27,6 @@ sortScoreBtn.addEventListener('click', () => {
 
 //Sortera highscore efter datum
 sortDateBtn.addEventListener('click', () => {
-    console.log("click time")
     let highscores = JSON.parse(localStorage.getItem(KEY)) || [];
     highscores.sort((a, b) => new Date(a.time) - new Date(b.time));
     localStorage.setItem(KEY, JSON.stringify(highscores));
