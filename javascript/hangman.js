@@ -24,6 +24,7 @@ let chosenWord = "";
 let guessedLetters = [];
 let wrongGuesses = 0;
 let wordLength = 0;
+let gameOver = false;
 export {wrongGuesses, wordLength};
 
 const wordPool = [ "TÖNT", "TOMTE", "TOFFEL", "SAND" ]
@@ -48,6 +49,7 @@ function startGame() {
   guessedLetters = [];
   wrongGuesses = 0;
   wordLength = chosenWord.length;
+  gameOver = false;
   
   createKeyboard();
   resetHangman();
@@ -80,6 +82,11 @@ function updateLivesDisplay() {
 
 // What happens when you click a letter
 function handleGuess(letter, buttonX) {
+  // Prevent multiple clicks on same button or clicks after game over
+  if (buttonX.disabled || gameOver) {
+    return;
+  }
+  
   buttonX.disabled = true;
 
   if (chosenWord.includes(letter)) {
@@ -133,6 +140,7 @@ function checkGameEnd() {
     .every(letter => guessedLetters.includes(letter));
 
   if (allLettersGuessed) {
+    gameOver = true;
     blinkScreen("blink-green", () => {
       showGameOver(true);
     });
@@ -140,6 +148,7 @@ function checkGameEnd() {
   }
 
   if (wrongGuesses === 5) {
+    gameOver = true;
     blinkScreen("blink-red", () => {
       showGameOver(false);
     });
