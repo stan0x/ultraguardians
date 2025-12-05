@@ -1,7 +1,7 @@
 window.score = 0;
 
 
-// gör koden till själva hänggubben//  Hämtar HTML elementen
+// Code for the hangman game // Get HTML elements
 const startView = document.getElementById("startView");
 const gameView = document.getElementById("gameView");
 const gameOverView = document.getElementById("gameOverView");
@@ -9,7 +9,7 @@ const keyboardDiv = document.getElementById("keyboard");
 const wordDisplay = document.getElementById("wordDisplay");
 const livesDisplay = document.getElementById("livesDisplay");
 
-// byter mellan skärmana
+// Switch between views
 function showView(view) {
   startView.classList.add("hideView");
   gameView.classList.add("hideView");
@@ -19,7 +19,7 @@ function showView(view) {
   view.classList.add("showView");
 }
 
-// spelets variabler
+// Game variables
 let chosenWord = "";
 let guessedLetters = [];
 let wrongGuesses = 0;
@@ -36,13 +36,13 @@ const hangmanParts = [
   document.getElementById("legs"),
   ]
 
-  // gömmer hangmannen i början av varje spel
+  // Hide the hangman at the start of each game
   function resetHangman() {
     hangmanParts.forEach(p => p.style.visibility = "hidden"
     )
   }
 
-  // startar spelet och väljer ett ord, resettar allting
+  // Start the game and choose a word, reset everything
 function startGame() {
   chosenWord = wordPool[Math.floor(Math.random() * wordPool.length)];
   guessedLetters = [];
@@ -56,7 +56,7 @@ function startGame() {
   showView(gameView);
 }
 
-// visa ordet med _ _ _ _
+// Display the word with _ _ _ _
 function updateWordDisplay() {
   let display = chosenWord
 
@@ -73,12 +73,12 @@ function updateWordDisplay() {
   wordDisplay.textContent = display;
   }
 
-  // visar hur många fel en gjort
+  // Show how many mistakes have been made
 function updateLivesDisplay() {
-  livesDisplay.textContent = `Fel: ${wrongGuesses} / 5`;
+  livesDisplay.textContent = `Mistakes: ${wrongGuesses} / 5`;
 }
 
-// det som händer när man klickar en bokstav
+// What happens when you click a letter
 function handleGuess(letter, buttonX) {
   buttonX.disabled = true;
 
@@ -100,11 +100,11 @@ function handleGuess(letter, buttonX) {
   checkGameEnd();  
 }
 
-// gör en css class som blinkar
+// Create a CSS class that blinks
 function blinkScreen(colorClass, callback) {
   document.body.classList.add(colorClass);
   
-// om 2 sek tar bort classen och går vidare till nästa skrev
+// After 2 seconds remove the class and continue to next screen
   setTimeout(() => {
     document.body.classList.remove(colorClass);
     callback(); 

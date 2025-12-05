@@ -7,7 +7,7 @@ const KEY = 'highscores';
 import { wrongGuesses } from "./hangman.js";
 import { wordLength } from "./hangman.js";
 
-// Ändra knapp beroende på om spelaren skrivit något eller inte
+// Change button depending on whether the player has entered something or not
 playerNameInput.addEventListener('input', () => {
     if (playerNameInput.value === '') {
         gameOverButton.textContent = "Återgå till Start";
@@ -17,7 +17,7 @@ playerNameInput.addEventListener('input', () => {
 });
 
 
-//Sortera highscore efter poäng
+//Sort highscore by score
 sortScoreBtn.addEventListener('click', () => {
     let highscores = JSON.parse(localStorage.getItem(KEY)) || [];
     highscores.sort((a, b) => a.playerScore - b.playerScore);
@@ -25,7 +25,7 @@ sortScoreBtn.addEventListener('click', () => {
     showHighscore();
 })
 
-//Sortera highscore efter datum
+//Sort highscore by date
 sortDateBtn.addEventListener('click', () => {
     let highscores = JSON.parse(localStorage.getItem(KEY)) || [];
     highscores.sort((a, b) => new Date(a.time) - new Date(b.time));
@@ -33,23 +33,23 @@ sortDateBtn.addEventListener('click', () => {
     showHighscore();
 });
 
-//Klick på återgå knapp
+//Click on return button
 gameOverButton.addEventListener('click', () => {
 
-    //Återställ knappen
+    //Reset the button
     gameOverButton.textContent = "Återgå till Start"
     
-    //Få namn
+    //Get name
     const name = playerNameInput.value.trim();
     if (name == '') return;
 
-    //Få datum och tid
+    //Get date and time
     const time = new Date().toISOString();
     
-    //få Ordlängd
+    //Get word length
     const wordL = wordLength;
 
-    //få Score
+    //Get score
     const playerScore = wrongGuesses;
 
 
@@ -59,34 +59,34 @@ gameOverButton.addEventListener('click', () => {
         name, wordL, playerScore, time, 
     };
 
-    //lägg namnet till arrayen
+    //Add the name to the array
     highscores.unshift(newHighscoreEntry);
 
-    //sortera
+    //Sort
     highscores.sort((a, b) => a.playerScore - b.playerScore);
 
-    //Korta ner highscores till 5 entries
+    //Limit highscores to 5 entries
     if (highscores.length > 5) {
         highscores.splice(5, highscores.length)
     }
 
-    //skicka tillbaka listan till 
+    //Send the list back to localStorage
     localStorage.setItem(KEY, JSON.stringify(highscores));
 
-    //Nollställ input
+    //Reset input
     playerNameInput.value = '';
 
-    //Visa ny highscore
+    //Show new highscore
     showHighscore();
 });
 
 
-//funktion för att printa score
+//Function to print score
 function showHighscore() {
     const highscores = JSON.parse(localStorage.getItem(KEY)) || [];
     const highscoreList = document.getElementById("highscore");
 
-    // rensa listan först
+    // Clear the list first
     highscoreList.innerHTML = "";
 
     highscores.forEach((name) => {
@@ -97,5 +97,5 @@ function showHighscore() {
 }
 
 
-//Visa highscore då sidan laddas
+//Show highscore when page loads
 showHighscore();
